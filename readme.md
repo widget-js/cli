@@ -1,4 +1,4 @@
-## Widget Cli
+## Widget CLI
 ### How to install
 ```shell
 npm install --save-dev @widget-js/cli
