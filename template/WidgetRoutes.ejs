@@ -3,7 +3,7 @@ import <%= name %>WidgetDefine from "./<%= name %>.widget";
 const url = <%= name %>WidgetDefine.url;
 const name = <%= name %>WidgetDefine.name;
 <% if (configurable) { %>
-const configUrl = <%= name %>WidgetDefine.configUrl;
+const configUrl = <%= name %>WidgetDefine.configUrl!;
 
 const <%= name %>WidgetRoutes = [
     {
