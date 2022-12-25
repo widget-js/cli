@@ -1,16 +1,21 @@
 {
   "name": "@widget-js/cli",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "bin/widget.js",
   "author": "Neo Fu",
   "license": "MIT",
-  "type": "module",
   "private": false,
   "bin": {
     "widget": "bin/widget.js"
   },
+  "type": "module",
   "scripts": {
-    "widget": "node ./bin/widget.js"
+    "widget": "node ./bin/widget.js",
+    "build": "npm run build:esm && npm run build:types && npm run build:cjs && npm  run build:umd",
+    "build:cjs": "node tools/cleanup cjs && tsc -p config/tsconfig.cjs.json",
+    "build:esm": "node tools/cleanup esm && tsc -p config/tsconfig.esm.json",
+    "build:umd": "node tools/cleanup umd && webpack --config config/webpack.config.js",
+    "build:types": "node tools/cleanup types && tsc -p config/tsconfig.types.json"
   },
   "publishConfig": {
     "access": "public"
@@ -20,13 +25,31 @@
   },
   "dependencies": {
     "@vue/cli-shared-utils": "^5.0.8",
+    "@widget-js/core": "^0.1.14",
+    "chalk": "^5.2.0",
     "change-case": "^4.1.2",
+    "commander": "^9.4.1",
     "consola": "^2.15.3",
     "ejs": "^3.1.8",
     "inquirer": "^9.1.4",
-    "shelljs": "^0.8.5"
+    "shelljs": "^0.8.5",
+    "ws": "^8.11.0"
   },
   "devDependencies": {
-
+    "@types/inquirer": "latest",
+    "@types/ejs": "latest",
+    "@types/shelljs": "latest",
+    "@types/node": "^18.11.13",
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.2",
+    "@babel/node": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0",
+    "ts-jest": "^29.0.3",
+    "ts-loader": "^9.4.1",
+    "typescript": "^4.9.3",
+    "pinst": "^3.0.0",
+    "@types/jest": "^29.2.3"
   }
 }
