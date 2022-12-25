@@ -2,6 +2,7 @@ import {program} from 'commander';
 
 import packageJson from '../package.json' assert {type: 'json'};
 import createWidget from "../lib/createWidget.js";
+import release from "../lib/release/release.js";
 
 program
     .version(`@widget-js/cli ${packageJson.version}`)
@@ -12,7 +13,16 @@ program
     .action(async () => {
         await createWidget()
     })
+program
+    .command('release')
+    .description('发布应用，仅内部使用')
+    .action(async () => {
+        await release()
+    })
 
+//TODO init 初始化项目
+//TODO publish 发布
+//TODO delete  删除
 program.parse(process.argv);
 
 
