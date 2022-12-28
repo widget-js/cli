@@ -22,7 +22,6 @@ program
 
 //TODO init 初始化项目
 //TODO publish 发布
-//TODO delete  删除
 program.parse(process.argv);
 
 
