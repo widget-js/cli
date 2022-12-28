@@ -1,11 +1,17 @@
 import {program} from 'commander';
-
-import packageJson from '../package.json' assert {type: 'json'};
 import createWidget from "../lib/createWidget.js";
 import release from "../lib/release/release.js";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const packageJsonPath = path.join(__dirname, '../package.json');
+let cliPackage = JSON.parse(fs.readFileSync(packageJsonPath).toString());
 
 program
-    .version(`@widget-js/cli ${packageJson.version}`)
+    .version(`@widget-js/cli ${cliPackage.version}`)
     .usage('<command> [options]')
 program
     .command('create')
